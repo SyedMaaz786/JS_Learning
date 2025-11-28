@@ -29,12 +29,23 @@ console.log(numb1 < numb3);
 
 //Logical operator
 /* 
-
    &&   (and)
    ||   (or)
     !    (reverse)
 
  */
+
+//Assignment operator
+/*
+=
++=
+-=
+*=
+/=
+%=
+*/
+
+
 
 
 
