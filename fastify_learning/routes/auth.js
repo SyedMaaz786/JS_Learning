@@ -8,7 +8,7 @@ module.exports = async function (fastify, opts) {
   fastify.post("/reset-password/:token", authController.resetPassword);
   fastify.post(
     "/logout",
-    { preHandler: [fastify.authenticate] },
+    { preHandler: [fastify.authenticate] }, //protecting this route
     authController.resetPassword
   );
 };
