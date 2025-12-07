@@ -9,6 +9,6 @@ module.exports = async function (fastify, opts) {
   fastify.post(
     "/logout",
     { preHandler: [fastify.authenticate] }, //protecting this route
-    authController.resetPassword
+    authController.logout
   );
 };
