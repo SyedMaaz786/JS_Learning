@@ -33,6 +33,12 @@ app.get("/posts/new", (req, res) => {
   res.render("new.ejs");
 });
 
+app.post("/posts", (req, res) => {
+  let { username, content } = req.body; //destructuring the data present in the body
+  posts.push({ username, content });
+  res.send("Post Request Working!");
+});
+
 app.listen(port, () => {
   console.log("Listening to port: " + port);
 });
