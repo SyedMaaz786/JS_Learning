@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const port = 8080;
 const path = require("path");
+const { v4: uuidv4 } = require("uuid");
 
 app.use(express.urlencoded({ extended: true }));
 
@@ -12,17 +13,17 @@ app.use(express.static(path.join(__dirname, "public")));
 
 let posts = [
   {
-    id: "1a",
+    id: uuidv4(),
     username: "Syed Maaz",
     content: "Data Science",
   },
   {
-    id: "2b",
+    id: uuidv4(),
     username: "Salman Khan",
     content: "Megastar",
   },
   {
-    id: "3c",
+    id: uuidv4(),
     username: "Roman Reigns",
     content: "WWE",
   },
@@ -32,16 +33,19 @@ app.get("/posts", (req, res) => {
   res.render("index.ejs", { posts });
 });
 
+//New post creation
 app.get("/posts/new", (req, res) => {
   res.render("new.ejs");
 });
 
 app.post("/posts", (req, res) => {
   let { username, content } = req.body; //destructuring the data present in the body
-  posts.push({ username, content });
+  let id = uuidv4();
+  posts.push({ id, username, content });
   res.redirect("/posts");
 });
 
+//view the post in detail
 app.get("/posts/:id", (req, res) => {
   let { id } = req.params;
   let post = posts.find((p) => id === p.id); //we find the id of posts id we passed in the array if it is equal to the posts id then performing the next line logic
