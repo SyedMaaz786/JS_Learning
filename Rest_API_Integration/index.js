@@ -53,6 +53,13 @@ app.get("/posts/:id", (req, res) => {
   res.render("show.ejs", { post });
 });
 
+//update or edit
+app.get("/posts/:id/edit", (req, res) => {
+  let { id } = req.params;
+  let post = posts.find((p) => id === p.id);
+  res.render("edit.ejs", { post });
+});
+
 app.patch("/posts/:id", (req, res) => {
   let { id } = req.params;
   let newContent = req.body.content;
