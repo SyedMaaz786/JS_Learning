@@ -12,14 +12,17 @@ app.use(express.static(path.join(__dirname, "public")));
 
 let posts = [
   {
+    id: "1a",
     username: "Syed Maaz",
     content: "Data Science",
   },
   {
+    id: "2b",
     username: "Salman Khan",
     content: "Megastar",
   },
   {
+    id: "3c",
     username: "Roman Reigns",
     content: "WWE",
   },
@@ -37,6 +40,13 @@ app.post("/posts", (req, res) => {
   let { username, content } = req.body; //destructuring the data present in the body
   posts.push({ username, content });
   res.redirect("/posts");
+});
+
+app.get("/posts/:id", (req, res) => {
+  let { id } = req.params;
+  let post = posts.find((p) => id === p.id); //we find the id of posts id we passed in the array if it is equal to the posts id then performing the next line logic
+  console.log(post);
+  res.render("show.ejs", { post });
 });
 
 app.listen(port, () => {

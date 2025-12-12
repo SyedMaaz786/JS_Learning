@@ -3,20 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>All posts</title>
+    <title>Post in Detail</title>
     <link rel="stylesheet" href="/style.css" />
   </head>
   <body>
-    <h1>Quora posts</h1>
-    <% for(post of posts){ %>
+    <h1>Here is your post in detail</h1>
+    <p>Post id: <%= post.id %></p>
     <div class="post">
       <h3 class="username">@<%= post.username %></h3>
       <h4 class="content"><%= post.content %></h4>
-      <a href="http://localhost:8080/posts/<%= post.id %>">See in detail</a>
     </div>
-    <% } %>
-    <br />
-    <br />
-    <a href="http://localhost:8080/posts/new">Create New Post</a>
   </body>
 </html>
